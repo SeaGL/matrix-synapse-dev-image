@@ -1,0 +1,35 @@
+name: Build and publish container images
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-push-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log in to GitHub Container Registry
+        uses: redhat-actions/podman-login@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+          # TODO use {{ github.repository_owner }} when https://github.com/redhat-actions/podman-login/issues/44 is fixed
+          registry: ghcr.io/seagl
+
+      - name: Checkout Repo
+        uses: actions/checkout@v1
+
+      - name: Build container images
+        # Truly the reason this is Podman and not Docker is because I copied this workflow from a RHEL container stack repo and like
+        # #lazy
+        run: podman build --format docker -t synapse-dev-env ${{ matrix.version }}
+
+      - name: Push container images
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          image: synapse-dev
+          registry: ghcr.io/seagl

@@ -11,7 +11,7 @@ It comes with **zero security support**! Also the scripts are a little sketchy a
 ## Install
 
 ```bash
-$ docker pull synapse-dev # TODO
+$ docker pull ghcr.io/seagl/synapse-dev-env
 ```
 
 ## Usage
