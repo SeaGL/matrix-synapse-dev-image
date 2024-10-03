@@ -31,5 +31,5 @@ jobs:
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         uses: redhat-actions/push-to-registry@v2
         with:
-          image: synapse-dev
+          image: synapse-dev-env
           registry: ghcr.io/seagl
