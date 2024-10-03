@@ -25,7 +25,7 @@ jobs:
       - name: Build container images
         # Truly the reason this is Podman and not Docker is because I copied this workflow from a RHEL container stack repo and like
         # #lazy
-        run: podman build --format docker -t synapse-dev-env:latest ${{ matrix.version }} .
+        run: podman build --format docker -t synapse-dev-env ${{ matrix.version }} .
 
       - name: Push container images
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
