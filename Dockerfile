@@ -1,4 +1,4 @@
-FROM docker.io/matrixdotorg/synapse:v1.116.0
+FROM docker.io/matrixdotorg/synapse:v1.118.0
 
 LABEL org.opencontainers.image.source=https://github.com/SeaGL/matrix-synapse-dev-image
 LABEL org.opencontainers.image.description="Developer environment-optimized Matrix Synapse image"
