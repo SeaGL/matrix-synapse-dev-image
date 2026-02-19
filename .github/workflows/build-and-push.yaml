@@ -20,7 +20,7 @@ jobs:
           registry: ghcr.io/seagl
 
       - name: Checkout Repo
-        uses: actions/checkout@v1
+        uses: actions/checkout@v6
 
       - name: Build container images
         # Truly the reason this is Podman and not Docker is because I copied this workflow from a RHEL container stack repo and like
