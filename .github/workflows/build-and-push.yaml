@@ -29,7 +29,7 @@ jobs:
 
       - name: Push container images
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        uses: redhat-actions/push-to-registry@v2
+        uses: redhat-actions/push-to-registry@v3
         with:
           image: synapse-dev-env
           registry: ghcr.io/seagl
