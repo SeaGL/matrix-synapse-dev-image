@@ -16,8 +16,7 @@ jobs:
         with:
           username: ${{ github.actor }}
           password: ${{ github.token }}
-          # TODO use {{ github.repository_owner }} when https://github.com/redhat-actions/podman-login/issues/44 is fixed
-          registry: ghcr.io/seagl
+          registry: ${{ github.repository_owner }}
 
       - name: Checkout Repo
         uses: actions/checkout@v6
